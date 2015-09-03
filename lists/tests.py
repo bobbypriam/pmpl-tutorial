@@ -14,6 +14,19 @@ class HomePageTest(TestCase):
   def test_home_page_returns_correct_html(self):
     request = HttpRequest()
     response = home_page(request)
-    self.assertTrue(response.content.startswith(b'<html>'))
-    self.assertIn(b'<title>To-Do lists</title>', response.content)
+
+    # Starts with DOCTYPE tag
+    self.assertTrue(response.content.startswith(b'<!DOCTYPE html>'))
+    
+    # Has head and body tag
+    self.assertIn(b'<head>', response.content)
+    self.assertIn(b'<body>', response.content)
+
+    # Shows correct title
+    self.assertIn(b'<title>Bobby Priambodo</title>', response.content)
+
+    # Shows correct site header
+    self.assertIn(b'<h1>Bobby Priambodo\'s Profile</h1>', response.content)
+
+    # Ends with html close tag
     self.assertTrue(response.content.endswith(b'</html>'))
