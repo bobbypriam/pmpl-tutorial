@@ -28,5 +28,8 @@ class HomePageTest(TestCase):
     # Shows correct site header
     self.assertIn(b'<h1>Bobby Priambodo\'s Profile</h1>', response.content)
 
+    # Mentions Bobby's real name
+    self.assertIn(b'Widyanto Bagus Priambodo', response.content)
+
     # Ends with html close tag
     self.assertTrue(response.content.endswith(b'</html>'))
