@@ -15,7 +15,9 @@ class HomePageTest(TestCase):
   def test_home_page_returns_correct_html(self):
     request = HttpRequest()
     response = home_page(request)
-    expected_html = render_to_string('home.html')
+    expected_html = render_to_string('home.html', {
+      'comment': 'Yey, waktunya berlibur!'
+    })
     self.assertEqual(response.content.decode(), expected_html)
 
   def test_home_page_can_save_a_POST_request(self):
@@ -52,6 +54,32 @@ class HomePageTest(TestCase):
     response = home_page(request)
     self.assertIn('itemey 1', response.content.decode())
     self.assertIn('itemey 2', response.content.decode())
+
+  def test_home_page_displays_automatic_comments(self):
+    # Test if no items
+    request = HttpRequest()
+    response = home_page(request)
+    self.assertIn('Yey, waktunya berlibur!', response.content.decode())
+
+    # Test if items are less than 5
+    # Create 3 items
+    for i in range(0, 3):
+      Item.objects.create(text='item')
+    response = home_page(request)
+    self.assertIn('Sibuk tapi santai.', response.content.decode())
+
+    # Test if 5 items
+    # Create 2 more items, items are now 5
+    for i in range(0, 2):
+      Item.objects.create(text='item')
+    response = home_page(request)
+    self.assertIn('Sibuk tapi santai.', response.content.decode())
+
+    # Test if items are more than 5
+    # Create one more item
+    Item.objects.create(text='item')
+    response = home_page(request)
+    self.assertIn('Oh, tidak!', response.content.decode())
 
 class ItemModelTest(TestCase):
 

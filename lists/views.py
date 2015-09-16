@@ -7,4 +7,14 @@ def home_page(request):
     return redirect('/')
 
   items = Item.objects.all()
-  return render(request, 'home.html', {'items': items})
+  count = items.count()
+  comment = ''
+
+  if count == 0:
+    comment = 'Yey, waktunya berlibur!'
+  if count > 0 and count <= 5:
+    comment = 'Sibuk tapi santai.'
+  elif count > 5:
+    comment = 'Oh, tidak!'
+
+  return render(request, 'home.html', {'items': items, 'comment': comment})
