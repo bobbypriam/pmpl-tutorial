@@ -12,9 +12,9 @@ def home_page(request):
 
   if count == 0:
     comment = 'Yey, waktunya berlibur!'
-  if count > 0 and count <= 5:
+  elif count < 5:
     comment = 'Sibuk tapi santai.'
-  elif count > 5:
+  else:
     comment = 'Oh, tidak!'
 
   return render(request, 'home.html', {'items': items, 'comment': comment})
