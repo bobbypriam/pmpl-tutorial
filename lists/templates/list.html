@@ -8,11 +8,17 @@
 
     <p>Hello, my name is Widyanto Bagus Priambodo, but you can call me Bobby. My student ID is 1206208315.</p>
 
-    <h2>Start a new To-Do list <small>{{ comment }}</small></h2>
+    <h2>Your To-Do list <small>{{ comment }}</small></h2>
 
-    <form method="post">
+    <form method="post" action="/">
       <input name="item_text" id="id_new_item" placeholder="Enter a to-do item" />
       {% csrf_token %}
     </form>
+
+    <table id="id_list_table">
+      {% for item in items %}
+        <tr><td>{{ forloop.counter }}: {{ item.text }}</td></tr>
+      {% endfor %}
+    </table>
   </body>
 </html>
