@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bobby Priambodo</title>
+  </head>
+  <body>
+    <h1>Bobby Priambodo's Profile</h1>
+
+    <p>Hello, my name is Widyanto Bagus Priambodo, but you can call me Bobby. My student ID is 1206208315.</p>
+
+    <h2>{% block header_text %}{% endblock %}</h2>
+
+    <form method="post" action="{% block form_action %}{% endblock %}">
+      <input name="item_text" id="id_new_item" placeholder="Enter a to-do item" />
+      {% csrf_token %}
+    </form>
+    {% block table %}
+    {% endblock %}
+  </body>
+</html>
