@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bobby Priambodo</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/base.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Bobby Priambodo's Profile</h1>
+    <div class="container">
 
-    <p>Hello, my name is Widyanto Bagus Priambodo, but you can call me Bobby. My student ID is 1206208315.</p>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 jumbotron">
+          <h1>Bobby Priambodo's Profile</h1>
 
-    <h2>{% block header_text %}{% endblock %}</h2>
+          <p>Hello, my name is Widyanto Bagus Priambodo, but you can call me Bobby. My student ID is 1206208315.</p>
+        </div>
+      </div>
 
-    <form method="post" action="{% block form_action %}{% endblock %}">
-      <input name="item_text" id="id_new_item" placeholder="Enter a to-do item" />
-      {% csrf_token %}
-    </form>
-    {% block table %}
-    {% endblock %}
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="text-center">
+
+            <h2>{% block header_text %}{% endblock %}</h2>
+
+            <form method="post" action="{% block form_action %}{% endblock %}">
+              <input name="item_text" id="id_new_item" class="form-control input-lg" placeholder="Enter a to-do item" />
+              {% csrf_token %}
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          {% block table %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
   </body>
 </html>
