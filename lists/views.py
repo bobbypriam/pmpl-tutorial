@@ -2,7 +2,11 @@ from django.shortcuts import redirect, render
 from lists.models import Item, List
 
 def home_page(request):
-  count = Item.objects.count()
+  return render(request, 'home.html')
+
+def view_list(request, list_id):
+  list_ = List.objects.get(id=list_id)
+  count = Item.objects.filter(list=list_).count()
   comment = ''
 
   if count == 0:
@@ -12,11 +16,7 @@ def home_page(request):
   else:
     comment = 'Oh, tidak!'
 
-  return render(request, 'home.html', {'comment': comment})
-
-def view_list(request, list_id):
-  list_ = List.objects.get(id=list_id)
-  return render(request, 'list.html', {'list': list_})
+  return render(request, 'list.html', {'list': list_, 'comment': comment})
 
 def new_list(request):
   list_ = List.objects.create()

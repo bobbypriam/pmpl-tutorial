@@ -15,39 +15,8 @@ class HomePageTest(TestCase):
   def test_home_page_returns_correct_html(self):
     request = HttpRequest()
     response = home_page(request)
-    expected_html = render_to_string('home.html', {
-      'comment': 'Yey, waktunya berlibur!'
-    })
+    expected_html = render_to_string('home.html')
     self.assertEqual(response.content.decode(), expected_html)
-
-  def test_home_page_automatic_comments_if_no_items(self):
-    request = HttpRequest()
-    response = home_page(request)
-    self.assertIn('Yey, waktunya berlibur!', response.content.decode())
-
-  def test_home_page_automatic_comments_if_less_than_5(self):
-    list_ = List.objects.create()
-
-    # One item
-    Item.objects.create(text='item', list=list_)
-    request = HttpRequest()
-    response = home_page(request)
-    self.assertIn('Sibuk tapi santai.', response.content.decode())
-
-    # Add three more so the items become 4
-    for i in range(0, 3):
-      Item.objects.create(text='item', list=list_)
-    response = home_page(request)
-    self.assertIn('Sibuk tapi santai.', response.content.decode())
-
-  def test_home_page_automatic_comments_if_5_or_more(self):
-    list_ = List.objects.create()
-
-    for i in range(0, 5):
-      Item.objects.create(text='item', list=list_)
-    request = HttpRequest()
-    response = home_page(request)
-    self.assertIn('Oh, tidak!', response.content.decode())
 
 class ListAndItemModelsTest(TestCase):
 
@@ -105,6 +74,33 @@ class ListViewTest(TestCase):
     correct_list = List.objects.create()
     response = self.client.get('/lists/%d/' % (correct_list.id,))
     self.assertEqual(response.context['list'], correct_list)
+
+  def test_view_list_automatic_comments_if_no_items(self):
+    list_ = List.objects.create()
+    response = self.client.get('/lists/%d/' % (list_.id,))
+    self.assertIn('Yey, waktunya berlibur!', response.content.decode())
+
+  def test_view_list_automatic_comments_if_less_than_5(self):
+    list_ = List.objects.create()
+
+    # One item
+    Item.objects.create(text='item', list=list_)
+    response = self.client.get('/lists/%d/' % (list_.id,))
+    self.assertIn('Sibuk tapi santai.', response.content.decode())
+
+    # Add three more so the items become 4
+    for i in range(0, 3):
+      Item.objects.create(text='item', list=list_)
+    response = self.client.get('/lists/%d/' % (list_.id,))
+    self.assertIn('Sibuk tapi santai.', response.content.decode())
+
+  def test_home_page_automatic_comments_if_5_or_more(self):
+    list_ = List.objects.create()
+
+    for i in range(0, 5):
+      Item.objects.create(text='item', list=list_)
+    response = self.client.get('/lists/%d/' % (list_.id,))
+    self.assertIn('Oh, tidak!', response.content.decode())
 
 class NewListTest(TestCase):
 
