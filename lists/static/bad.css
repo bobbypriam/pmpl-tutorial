@@ -1,0 +1,15 @@
+* {
+  font-family: 'Comic Sans MS';
+}
+
+body {
+  background: red;
+}
+
+.text-center {
+  text-align: left;
+}
+
+.input-lg {
+  width: 50%;
+}
