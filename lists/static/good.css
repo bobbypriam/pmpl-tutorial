@@ -1,6 +1,5 @@
 body {
-  background: #eee;
-}
+  background: #eee; }
 
 .jumbotron {
   position: fixed;
@@ -12,50 +11,38 @@ body {
   left: 0;
   right: 0;
   text-align: left;
-
   margin: 0;
   padding: 20px;
-
   background: #2196f3;
   color: #fff;
-
-  box-shadow: rgba(0, 0, 0, .26) 0px 2px 5px 0px;
-}
+  box-shadow: rgba(0, 0, 0, 0.26) 0px 2px 5px 0px; }
 
 #id_new_item {
-  margin-top: 0;
-}
+  margin-top: 0; }
 
 .row:nth-of-type(2) {
-  margin-top: 200px;
-}
+  margin-top: 200px; }
 
 form {
-  margin-top: 20px;
-}
+  margin-top: 20px; }
 
 form,
 #id_list_table {
   padding: 10px;
   background: #fff;
   border: 1px solid #ddd;
-  box-shadow: rgba(0, 0, 0, .26) 0px 2px 5px 0px;
-}
+  box-shadow: rgba(0, 0, 0, 0.26) 0px 2px 5px 0px; }
 
 .form-control {
-  box-shadow: none;
-}
-
-.input-lg {
-  border-radius: 0;
-  border: none;
-  border-bottom: 1px solid #eee;
-}
+  box-shadow: none; }
+  .form-control.input-lg {
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #eee; }
 
 #id_list_table {
-  margin-top: 20px;
-}
+  margin-top: 20px; }
+  #id_list_table td {
+    padding: 14px; }
 
-#id_list_table td {
-  padding: 14px;
-}
+/*# sourceMappingURL=good.css.map */

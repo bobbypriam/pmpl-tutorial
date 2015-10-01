@@ -1,15 +1,13 @@
 * {
-  font-family: 'Comic Sans MS';
-}
+  font-family: "Comic Sans MS"; }
 
 body {
-  background: red;
-}
+  background: red; }
 
 .text-center {
-  text-align: left;
-}
+  text-align: left; }
 
 .input-lg {
-  width: 50%;
-}
+  width: 50%; }
+
+/*# sourceMappingURL=bad.css.map */
