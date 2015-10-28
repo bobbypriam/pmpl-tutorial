@@ -1,6 +1,9 @@
 body
   background: #eee
 
+.container
+  margin-bottom: 100px
+
 =card()
   padding: 10px
   background: #fff
@@ -8,7 +11,7 @@ body
   box-shadow: rgba(0, 0, 0, .26) 0px 2px 5px 0px
 
 .jumbotron
-  position: fixed
+  position: absolute
   border-radius: 0 !important
   margin: 0
   padding: 20px
@@ -29,7 +32,7 @@ body
 #id_new_item
   margin-top: 0
 
-.row:nth-of-type(2)
+.form
   margin-top: 200px
 
 form
@@ -52,3 +55,17 @@ form,
 
   td
     padding: 14px
+
+.blog
+  margin-top: 20px
+
+  h2
+    margin-bottom: 20px
+
+  .row
+    +card()
+    margin-bottom: 20px
+    padding-bottom: 20px
+
+    h3
+      margin-top: 10px

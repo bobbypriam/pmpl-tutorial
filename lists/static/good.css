@@ -1,8 +1,11 @@
 body {
   background: #eee; }
 
+.container {
+  margin-bottom: 100px; }
+
 .jumbotron {
-  position: fixed;
+  position: absolute;
   border-radius: 0 !important;
   margin: 0;
   padding: 20px;
@@ -20,7 +23,7 @@ body {
 #id_new_item {
   margin-top: 0; }
 
-.row:nth-of-type(2) {
+.form {
   margin-top: 200px; }
 
 form {
@@ -44,5 +47,19 @@ form,
   margin-top: 20px; }
   #id_list_table td {
     padding: 14px; }
+
+.blog {
+  margin-top: 20px; }
+  .blog h2 {
+    margin-bottom: 20px; }
+  .blog .row {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: rgba(0, 0, 0, 0.26) 0px 2px 5px 0px;
+    margin-bottom: 20px;
+    padding-bottom: 20px; }
+    .blog .row h3 {
+      margin-top: 10px; }
 
 /*# sourceMappingURL=good.css.map */
